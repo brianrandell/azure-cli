@@ -1,5 +1,5 @@
 @ECHO OFF
-
+echo.Starting Brian File Extra Echo
 REM Command file for Sphinx documentation
 
 if "%SPHINXBUILD%" == "" (
@@ -279,29 +279,43 @@ if "%1" == "dummy" (
 )
 
 if "%1" == "xmlwithlatest" (
-	az cloud update --profile latest
+	echo.Running xmlwithlatest
+    az cloud update --profile latest
 	%SPHINXBUILD% -E -b xml %ALLSPHINXOPTS% %BUILDDIR%/xml/latest
 	if errorlevel 1 exit /b 1
 	echo.
 	echo.Build finished. The XML files are in %BUILDDIR%/xml/latest.
+    echo.
+    echo.End xmlwithlatest
 	goto :eof
 )
 
 if "%1" == "xmlwithversion" (
+    echo.Running xmlwithversion
 	call :genxmlwithversion
 	if errorlevel 1 exit /b 1
 	echo.
 	echo.Build finished. The XML files are in %BUILDDIR%/xml.
-	goto :eof
+    echo.
+    echo.End xmlwithversion-exit is next
+    exit /b 0
+    goto :eof
 )
 
 :genxmlwithversion
+echo.Running at genxmlwithversion label
 for /f %%i in ('az cloud list-profiles -o tsv') do (
 	az cloud update --profile %%i
 	%SPHINXBUILD% -E -b xml %ALLSPHINXOPTS% %BUILDDIR%/xml/%%i
 	if errorlevel 1 exit /b 1
 	echo.Build of profile %%i finished. The XML files are in %BUILDDIR%/xml/%%i.
+    echo.
+    echo.End Loop genxmlwithversion label
 )
+echo.
+echo.End of loop
+echo.
+echo.Full end genxmlwithversion label
 goto :eof
 
 :end
