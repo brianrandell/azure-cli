@@ -1,5 +1,5 @@
 @ECHO OFF
-Echo Brian File
+echo.Starting Brian File
 REM Command file for Sphinx documentation
 
 if "%SPHINXBUILD%" == "" (
@@ -279,7 +279,8 @@ if "%1" == "dummy" (
 )
 
 if "%1" == "xmlwithlatest" (
-	az cloud update --profile latest
+	echo.Running xmlwithlatest
+    az cloud update --profile latest
 	%SPHINXBUILD% -E -b xml %ALLSPHINXOPTS% %BUILDDIR%/xml/latest
 	if errorlevel 1 exit /b 1
 	echo.
@@ -288,6 +289,7 @@ if "%1" == "xmlwithlatest" (
 )
 
 if "%1" == "xmlwithversion" (
+    echo.Running xmlwithversion
 	call :genxmlwithversion
 	if errorlevel 1 exit /b 1
 	echo.
@@ -296,6 +298,7 @@ if "%1" == "xmlwithversion" (
 )
 
 :genxmlwithversion
+echo.Running at genxmlwithversion label
 for /f %%i in ('az cloud list-profiles -o tsv') do (
 	az cloud update --profile %%i
 	%SPHINXBUILD% -E -b xml %ALLSPHINXOPTS% %BUILDDIR%/xml/%%i
