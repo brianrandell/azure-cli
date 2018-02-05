@@ -305,4 +305,6 @@ for /f %%i in ('az cloud list-profiles -o tsv') do (
 goto end
 
 :end
+echo.End of file reached debug.
+exit /b 0
 exit 0
