@@ -298,8 +298,7 @@ if "%1" == "xmlwithversion" (
 	echo.Build finished. The XML files are in %BUILDDIR%/xml.
     echo.
     echo.End xmlwithversion-exit is next
-    exit /b 0
-    goto end
+    goto :eof
 )
 
 :genxmlwithversion
