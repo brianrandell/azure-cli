@@ -299,7 +299,7 @@ if "%1" == "xmlwithversion" (
     echo.
     echo.End xmlwithversion-exit is next
     exit /b 0
-	goto :eof
+    goto end
 )
 
 :genxmlwithversion
