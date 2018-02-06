@@ -287,7 +287,7 @@ if "%1" == "xmlwithlatest" (
 	echo.Build finished. The XML files are in %BUILDDIR%/xml/latest.
     echo.
     echo.End xmlwithlatest
-	goto end
+	goto :eof
 )
 
 if "%1" == "xmlwithversion" (
@@ -297,8 +297,9 @@ if "%1" == "xmlwithversion" (
 	echo.
 	echo.Build finished. The XML files are in %BUILDDIR%/xml.
     echo.
-    echo.End xmlwithversion
-	goto end
+    echo.End xmlwithversion-exit is next
+    exit /b 0
+	goto :eof
 )
 
 :genxmlwithversion
@@ -313,7 +314,7 @@ for /f %%i in ('az cloud list-profiles -o tsv') do (
 )
 echo.End of loop
 echo.End genxmlwithversion label
-goto end
+goto :eof
 
 :end
 echo.End of file reached debug.
