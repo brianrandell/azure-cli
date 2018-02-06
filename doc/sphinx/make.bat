@@ -298,6 +298,7 @@ if "%1" == "xmlwithversion" (
 	echo.Build finished. The XML files are in %BUILDDIR%/xml.
     echo.
     echo.End xmlwithversion-exit is next
+    exit /b 0
     goto :eof
 )
 
@@ -318,6 +319,3 @@ echo.Full end genxmlwithversion label
 goto :eof
 
 :end
-echo.End of file reached debug.
-exit /b 0
-exit 0
