@@ -310,10 +310,12 @@ for /f %%i in ('az cloud list-profiles -o tsv') do (
 	if errorlevel 1 exit /b 1
 	echo.Build of profile %%i finished. The XML files are in %BUILDDIR%/xml/%%i.
     echo.
-    echo.End genxmlwithversion label
+    echo.End Loop genxmlwithversion label
 )
+echo.
 echo.End of loop
-echo.End genxmlwithversion label
+echo.
+echo.Full end genxmlwithversion label
 goto :eof
 
 :end
